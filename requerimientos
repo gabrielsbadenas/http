@@ -1,0 +1,26 @@
+- html form
+- host/port para ip local para abrirlo en otro celular
+- flask server
+- clases donacion, listado
+- metodo post que funcione
+- metodo get todos las donaciones
+- modulo mail funcional
+- estructura de directorios que sea aprovable
+- no usar lectura de archivos json porque solo necesito memoria
+- router e index separados
+- overall functional server
+- no centrarse en el frontend
+- encontrar el codigo de santi
+- enviarselo a mariano
+- hacer el otro final si queda tiempo
+- optimizar las clases y los algoritmos
+- colocarlos en donde corresponda y no en cualquier lado
+- intentar hacer una clase de routers
+- aprender algo de pug
+- ordenar todo en un solo directorio
+- poner host y port en /config
+- agregar un id de donacion
+- intentar crear un sistema de login para expressjs
+
+- unir todo en un solo proyecto y testearlo
+- instalar todas las dependencias
