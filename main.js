@@ -3,7 +3,7 @@ const router = require('./controllers/router')
 const app = express()
 const url = {
 	port: 8080,
-	ip: '192.168.0.94'
+	ip: 'localhost'
 }
 
 app.use('/', router)

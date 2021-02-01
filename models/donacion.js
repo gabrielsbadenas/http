@@ -1,9 +1,6 @@
-let minimo = 10000
-let anonima = "anon"
-
-function mandarMail(){
-	console.log("cursonodeav@gmail.com")
-}
+const send = require('../mail/send')
+const minimo = 10000
+const anonima = "anon"
 
 class Donacion{
 	constructor(monto, nombre = anonima){
@@ -18,7 +15,7 @@ class Donacion{
 			this.monto = monto
 			if(this.nombre != anonima
 			 && monto > minimo){
-				mandarMail()
+				send(this.nombre,this.monto)
 			}
 		}
 	}
