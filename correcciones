@@ -1,12 +1,18 @@
 - no mandar mails desde modelo
 - caso de uso que interactue entre modelo y mail
 - crear donacion en caso de uso, no en dao
-- modulo de mails: objeto con metodos y constructor. recibe credenciales. todo en el mismo archivo. opcional: credenciales en archivo de configuracion.
+- modulo de mails: objeto con metodos y constructor.
+recibe credenciales. todo en el mismo archivo.
+opcional: credenciales en archivo de configuracion.
 - importante: incluir representacion de casos de uso.
-- efectuar donacion: crear una donacion, manda el mail, la guarda en el dao de donaciones.
+- efectuar donacion: crear una donacion, manda el mail,
+la guarda en el dao de donaciones.
 	- donacion: se importa
-	- dao y mailer: se intectan (se importan las instacias o se pasan por parametros)
+	- dao y mailer: se intectan
+	(se importan las instacias o se pasan por parametros)
 - opcional: usar factories
 - invocar caso de uso en router
 - no es necesario usar vistas
-- en el post devolver la donacion creada, con su id, codigo de estado 201. si hay un error, usar 400 o 500. usar try/catch.
+- en el post devolver la donacion creada, con su id,
+codigo de estado 201. si hay un error, usar 400 o 500.
+usar try/catch.
