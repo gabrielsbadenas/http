@@ -8,7 +8,7 @@ opcional: credenciales en archivo de configuracion.
 - efectuar donacion: crear una donacion, manda el mail,
 la guarda en el dao de donaciones.
 	- donacion: se importa
-	- dao y mailer: se intectan
+	- dao y mailer: se inyectan
 	(se importan las instacias o se pasan por parametros)
 - opcional: usar factories
 - invocar caso de uso en router
