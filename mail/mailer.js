@@ -16,20 +16,27 @@ class Mailer{
 	}
 
 	send(_subject, _text){
-		var msg = {
-			from: this.user,
+		try{
+		this.transporter.sendMail({
+			from: "hola",
 			to: this.to,
 			subject: _subject,
 			text: _text
-		}
-		transporter.sendMail(msg, (error, info) => {
+		})
+	}catch(error){
+		console.log(error)
+	}
+		//this.transporter.sendMail(msg)
+			/*, (error, info) => {
 			try{
 				res.status(200).jsonp(req.body)
 			}catch(error) {
 				res.status(500).send(error.message)
 			}
-		})
-	}
+			*/
+		}
 }
+//no anda
+//copiar el del proyecto de 2020
 
 module.exports = Mailer

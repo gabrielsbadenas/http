@@ -4,3 +4,5 @@ class Donacion{
 		this.nombre = nombre
 	}
 }
+
+module.exports = Donacion
