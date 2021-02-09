@@ -1,37 +1,41 @@
 const DonacionDAO = require('../daos/DonacionDAO.js'),
-//Mailer = require('../mail/mailer'),
+Mail = require('../mail/mail'),
 efectuarDonacion = require('../casosDeUso/efectuarDonacion'),
 listarDonaciones = require('../casosDeUso/listarDonaciones'),
 options = require('../config/options'),
-bodyParser = require('body-parser'),
-urlencodedParser = bodyParser.urlencoded({ extended: false }),
 express = require('express'),
-rtr = express.Router()
+rtr = express.Router(),
+bodyParser = require("body-parser")
 
+rtr.use(bodyParser.urlencoded({extended: false}))
 rtr.use(bodyParser.json())
 
-//let mailer = new Mailer(options.mail.host,options.mail.auth.user, options.mail.auth.pass)
-let dao = new DonacionDAO()
-efectuarDonacion(mailer, dao, 14888, "gabriel")
+let dao = new DonacionDAO(),
+mail = new Mail(options.mail)
 
 rtr.get('/', function (req, res) {
 	res.send(dao.getAll())
 })
 
-//todo arreglar el post
-rtr.post('/', urlencodedParser, function(req, res) {
-	//console.log(req.body)
-	efectuarDonacion(mailer, dao, req.bod.monto, req.body.nombre)
-	res.end('ok')
-	//efectuarDonacion(mailer, dao, req.body.monto, req.body.nombre)
-	//hacer lo que dice la correccion de
-	//implementar los casos de uso
-	//usar ids
-	// https://expressjs.com/en/resources/middleware/body-parser.html
+rtr.post('/', function(req, res) {
+	let donacion
+	try{
+		donacion = efectuarDonacion(mail, dao, req.body.monto, req.body.nombre)
+		res.status(201)
+		res.send(donacion)
+	}catch(error){
+		res.status(400)
+		res.send({errorMsg: error})
+	}
+	res.end()
 })
 
 rtr.get('/:id', function (req, res) {
-	res.send(listarDonaciones(dao.getAll(), req.params.id))
+	try{
+		res.send(listarDonaciones(dao.getAll(), req.params.id))
+	}catch(error){
+		res.send({errorMsg: error})
+	}
 })
 
 module.exports = rtr

@@ -1,5 +1,6 @@
 class Donacion{
-	constructor(monto, nombre){
+	constructor(id, monto, nombre){
+		this.id = id
 		this.monto = monto
 		this.nombre = nombre
 	}
