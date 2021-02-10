@@ -1,7 +1,13 @@
-const express = require('express')
-const router = require('./controladores/DonacionRouter')
-const options = require('./config/options')
-const app = express()
+const express = require('express'),
+router = require('GastoRouter'),
+options = {
+  "url": {
+    "port": 8080,
+    "ip": "localhost"
+  }
+}
+
+app=express()
 
 app.use('/', router)
 
