@@ -1,0 +1,40 @@
+hola gabriel,
+te digo algunas cosas que estoy viendo, para que puedas mejorar en proximos ejercicios:
+
+desde la propuesta de la materia, no es correcto que el modelo Donacion incluya la implementación del envío de mail. Esto agrega una dependencia desde el dominio hacia una capa externa (servicios) lo que genera un incremento en el grado de acoplamiento del sistema.
+Lo correcto sería tener un caso de uso que se encargue de interactuar tanto con la Donación como con el servicio de envío de mails. de esa manera, ambos se mantienen independientes.
+Por otro lado, en lugar de incluir el Listado como modelo, probablemente estaríamos hablando de un Repositorio de Donaciones, o un DAO de Donaciones (eso podes incluirlo en otra carpeta, de datos, o de DAOs, o repos, o algo así, fuera del dominio, ya que contiene la implementación de la persistencia, aunque en este caso sea en memoria).
+En este caso, además, para continuar en la línea del desacoplamiento, la creación de la donación no la realizaría el DAO, sino el Caso de Uso.
+Como último detalle, para continuar con la línea de lo visto en clase, el módulo de mails sería preferentemente un objeto con metodos y constructor, que reciba sus credenciales al ser creado, y exponga un metodo para enviar mails, sin necesidad de tener el transporter en un archivo aparte, pero sí con la posibilidad de modificar mail y credenciales al momento de instanciarlo. Estas credenciales son las que usualmente se incluyen en un archivo de configuración. La inclusión de este mecanismo de protección de datos sensibles en la aplicación suma puntos, pero no es requisito para la aprobación del examen.
+Creo que lo principal que haría que el examen esté incompleto, fuera de estos detalles que te marco, es que no incluiste algo que represente al caso de uso, que es el ingrediente principal de lo que vimos durante la segunda mitad del cuatri.
+en este caso, la solución sería algo así:
+
+carpetas:
+
+donaciones:
+__modelos:
+____Donacion
+__casosDeUso:
+____efectuarDonacion
+____listarDonaciones
+__controladores:
+____DonacionRouter
+__daos:
+____DonacionDAO
+
+luego, en tus casos de uso:
+
+efectuar donacion crea la donacion, utiliza el servicio de mails para enviar si es necesario, y la guarda usando al DAO de donaciones. de estas tres dependencias, la donacion se importa (dependencia mas cercana al dominio del negocio), mientras que dao y mailer se inyectan (dependencias relacionadas a detalles de implementación, mas cercanas a la infraestructura de la aplicacion).
+
+el caso de listar es analogo (y mas simple), por eso no lo detallo.
+
+en ambos casos, es posible agregar factories para profundizar el acoplamiento. esto último suma puntos si todo el resto esta bien, pero no es suficiente para aprobar si el resto no funciona.
+
+en resumen, lo mas importante es plasmar el concepto de caso de uso, como lo vimos en clase, e invocarlo desde donde corresponda (en tu caso, desde el controlador o router).
+
+con respecto a la parte de vistas, no es algo que se pida asi (pero tampoco esta mal si te sirve para probar los endpoints), asi que no haré observaciones al respecto.
+OJO, que en el post, lo que hiciste no fue un endpoint REST, sino algo parecido a una página web, que NO es lo pedido. deberías devolver la donación creada, con su id, y un codigo de estado 201, o en caso de error, un 400 o 500 según corresponda. En este proceso, usualmente  se usa try/catch en lugar de if/else, ya que puede haber errores que escapen al control de tu condicional, y eso te colgaría el servidor, no devolviendo ninguna respuesta (dejando al cliente esperando eternamente, o dando un TimeOut).
+
+Espero que se hayan entendido las observaciones y correcciones!
+
+saludos!
