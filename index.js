@@ -1,7 +1,7 @@
-const express = require('express')
-const router = require('./controladores/DonacionRouter')
-const options = require('./config/options')
-const app = express()
+const express = require('express'),
+router = require('./controladores/DonacionRouter'),
+options = require('./config/options'),
+app = express()
 
 app.use('/', router)
 

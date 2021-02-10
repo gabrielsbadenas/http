@@ -10,7 +10,7 @@ bodyParser = require("body-parser")
 rtr.use(bodyParser.urlencoded({extended: false}))
 rtr.use(bodyParser.json())
 
-let dao = new DonacionDAO(),
+var dao = new DonacionDAO(),
 mail = new Mail(options.mail)
 
 rtr.get('/', function (req, res) {
