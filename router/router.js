@@ -19,7 +19,7 @@ rtr.get('/', function (req, res) {
 function entero(numero) {
 	return +numero
 }
-let user = {
+let user0 = {
 	nombres: {
 		primer: 'gabriel',
 		ultimo: 'badenas'
@@ -40,6 +40,7 @@ let user = {
 		number:entero(12345678)
 	}
 }
+let user = JSON.stringify(user0)
 rtr.post('/', function (req, res) {
 
 	try {
