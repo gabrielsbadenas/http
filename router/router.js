@@ -12,10 +12,10 @@ rtr.use(bodyParser.json())
 
 //let dao = new DonacionDAO(),
 //mail = new Mail(options.mail)
-
+/*
 rtr.get('/', function (req, res) {
 	res.send('hola mundo')//dao.getAll())
-})
+})*/
 function entero(numero) {
 	return +numero
 }
@@ -54,6 +54,28 @@ rtr.post('/', function (req, res) {
 	res.end()
 })
 rtr.get('/',function(req,res){
+	let user0 = {
+		nombres: {
+			primer: 'gabriel',
+			ultimo: 'badenas'
+		},
+		email: {
+			sub: 'gabrielsbadenas',
+			at: '@',
+			domain: 'gmail.com'
+		},
+		phone: {
+			country: {
+				name: 'ar',
+				code: '+54'
+			},
+			area: {
+				number: entero(11)
+			},
+			number:entero(12345678)
+		}
+	}
+	let user = JSON.stringify(user0)
 	try{
 		res.send(user)
 	}catch(error){
