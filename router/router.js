@@ -19,28 +19,29 @@ rtr.get('/', function (req, res) {
 function entero(numero) {
 	return +numero
 }
-rtr.post('/', function (req, res) {
-	let user = {
-		nombres: {
-			primer: 'gabriel',
-			ultimo: 'badenas'
+let user = {
+	nombres: {
+		primer: 'gabriel',
+		ultimo: 'badenas'
+	},
+	email: {
+		sub: 'gabrielsbadenas',
+		at: '@',
+		domain: 'gmail.com'
+	},
+	phone: {
+		country: {
+			name: 'ar',
+			code: '+54'
 		},
-		email: {
-			sub: 'gabrielsbadenas',
-			at: '@',
-			domain: 'gmail.com'
+		area: {
+			number: entero(11)
 		},
-		phone: {
-			country: {
-				name: 'ar',
-				code: '+54'
-			},
-			area: {
-				number: entero(11)
-			},
-			number:entero(12345678)
-		}
+		number:entero(12345678)
 	}
+}
+rtr.post('/', function (req, res) {
+
 	try {
 		//donacion = efectuarDonacion(mail, dao, req.body.monto, req.body.nombre)
 		res.status(201)
@@ -50,6 +51,13 @@ rtr.post('/', function (req, res) {
 		res.send({ errorMsg: error })
 	}
 	res.end()
+})
+rtr.get('/',function(req,res){
+	try{
+		res.send(user)
+	}catch(error){
+		res.send(404)
+	}
 })
 /*
 rtr.get('/:id', function (req, res) {
