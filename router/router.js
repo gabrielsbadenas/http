@@ -4,10 +4,10 @@
 //listarDonaciones = require('../casosDeUso/listarDonaciones'),
 //options = require('../config/options'),
 const express = require('express'),
-rtr = express.Router(),
-bodyParser = require("body-parser")
+	rtr = express.Router(),
+	bodyParser = require("body-parser")
 
-rtr.use(bodyParser.urlencoded({extended: false}))
+rtr.use(bodyParser.urlencoded({ extended: false }))
 rtr.use(bodyParser.json())
 
 //let dao = new DonacionDAO(),
@@ -16,16 +16,38 @@ rtr.use(bodyParser.json())
 rtr.get('/', function (req, res) {
 	res.send('hola mundo')//dao.getAll())
 })
-
-rtr.post('/', function(req, res) {
-	let donacion='donacion'
-	try{
+function entero(numero) {
+	return +numero
+}
+rtr.post('/', function (req, res) {
+	let user = {
+		nombres: {
+			primer: 'gabriel',
+			ultimo: 'badenas'
+		},
+		email: {
+			sub: 'gabrielsbadenas',
+			at: '@',
+			domain: 'gmail.com'
+		},
+		phone: {
+			country: {
+				name: 'ar',
+				code: '+54'
+			},
+			area: {
+				number: entero(11)
+			},
+			number:entero(12345678)
+		}
+	}
+	try {
 		//donacion = efectuarDonacion(mail, dao, req.body.monto, req.body.nombre)
 		res.status(201)
-		res.send(donacion)
-	}catch(error){
+		res.send(user)
+	} catch (error) {
 		res.status(400)
-		res.send({errorMsg: error})
+		res.send({ errorMsg: error })
 	}
 	res.end()
 })
