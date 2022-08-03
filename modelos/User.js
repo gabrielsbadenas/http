@@ -31,3 +31,4 @@ return {
 		number:entero(12345678)
 	}
 }
+//todo: hacerlo pero con class y constructor
