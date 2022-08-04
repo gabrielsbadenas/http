@@ -26,9 +26,9 @@ const user0 = {
 			code: '+54'
 		},
 		area: {
-			number: entero(11)
+			number: 11
 		},
-		number:entero(12345678)
+		number:12345678
 	}
 }
 class User{
@@ -43,6 +43,7 @@ constructor(phone,email,address,name,documento){
 class Phone{
 constructor(country,area,number){
 this.phone=country+area+number
+	//posible bug al sumar numeros y strings en js se puede llegar a hacer una operacion matematica en lugar de concatenar strings
 }
 }
 class Email{
@@ -71,11 +72,11 @@ constructor(first,last){
 this.first=first
 this.last=last
 }
-}
+}/*
 let users = [user0]
 function saveAsJSON(user){
 json.add(user)
 	users.add(user)
 }
-
+*/
 //todo: hacerlo pero con class y constructor
