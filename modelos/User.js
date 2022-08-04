@@ -1,4 +1,4 @@
-return {
+const user0 = {
 	nombres: {
 		primer: 'gabriel',
 		ultimo: 'badenas'
@@ -30,5 +30,32 @@ return {
 		},
 		number:entero(12345678)
 	}
+}
+class User{
+constructor(phone,email,address,name,documento){
+	this.phone=phone
+	this.email=email
+	this.address=address
+	this.documento=documento
+	this.name=name
+}
+}
+class Phone{
+constructor(){}
+}
+class Email{
+constructor(){}
+}
+class Address{
+constructor(){}
+}
+class Document{
+constructor(){}
+}
+class Name{
+constructor(first,last){
+this.first=first
+this.last=last
+}
 }
 //todo: hacerlo pero con class y constructor
