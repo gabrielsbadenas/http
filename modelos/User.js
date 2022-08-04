@@ -41,16 +41,30 @@ constructor(phone,email,address,name,documento){
 }
 }
 class Phone{
-constructor(){}
+constructor(country,area,number){
+this.phone=country+area+number
+}
 }
 class Email{
-constructor(){}
+constructor(sub,domain){
+this.email=sub+'@'+domain
+}
 }
 class Address{
-constructor(){}
+constructor(province,street,number,door,city,postalcode){
+this. province= province
+this. street= street
+this. number= number
+this. door= door
+this. city= city
+this. postalcode=postalcode 
+}
 }
 class Document{
-constructor(){}
+constructor(tipo,numero){
+this.tipo=tipo
+	this.numero=numero
+}
 }
 class Name{
 constructor(first,last){
@@ -58,4 +72,10 @@ this.first=first
 this.last=last
 }
 }
+let users = [user0]
+function saveAsJSON(user){
+json.add(user)
+	users.add(user)
+}
+
 //todo: hacerlo pero con class y constructor
